@@ -9,9 +9,9 @@
 Description=Hardware RTC init Service
 After=syslog.target
 After=network.target
-After=time-sync.target
-After=multi-user.target
-After=local-fs.target
+# After=time-sync.target
+# After=multi-user.target
+# After=local-fs.target
 
 [Service]
 Type=simple
