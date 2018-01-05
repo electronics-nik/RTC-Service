@@ -4,3 +4,12 @@
 ----
 Файл `rtc.service` необходимо поместить в папку `/etc/systemd/system`<br />
 Папку `RTC` необходимо поместить в папку `/opt` 
+----
+Проверки статуса сервиса:
+* **systemdctl status rtc**
+
+Активации сервиса:
+* **systemdctl enable rtc**
+
+Деактивация сервиса:
+* **systemctl disable rtc**
