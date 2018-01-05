@@ -1,5 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-2/new_device 2>> /tmp/rtc.err.log 
-sleep 10
-hwclock -D -s -f /dev/rtc1 2>> /tmp/hw.err.log
+cnt=`ls /dev/rtc1 | wc -l`
+
+while true; do
+  sleep 10
+  cnt1=`ls /dev/rtc1 | wc -l`
+  [ $cnt1 -ne $cnt ] && exit
+  echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-2/new_device &>> /tmp/rtc.err.log
+done
+
+hwclock -D -s -f /dev/rtc1 &>> /tmp/hwclock.err.log
