@@ -7,18 +7,17 @@
 
 [Unit]
 Description=Hardware RTC init Service
-After=syslog.target
-After=network.target
+# After=syslog.target
+# After=network.target
 # After=time-sync.target
 # After=multi-user.target
 # After=local-fs.target
+After=network.target auditd.service
 
 [Service]
 Type=simple
 ExecStart=/opt/RTC/rtc_init.sh
 RemainAfterExit=yes
-# User=pi
-# Group=pi
 
 [Install]
 WantedBy=multi-user.target
